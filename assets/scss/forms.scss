@@ -1,0 +1,41 @@
+.form__two__cols {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: var(--gap);
+
+  input[type=checkbox] {
+    width: 20px;
+    margin-left: auto;
+  }
+}
+
+.form__vertical {
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    flex: 1;
+    width: 100%;
+    margin-top: space(1);
+  }
+}
+
+.secondary__actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+input {
+  border: none;
+  background: #efefef;
+  border-radius: 5px;
+  padding: space(2);
+}
+
+input[type=submit] {
+  background: var(--secondary-400);
+  color: var(--secondary-900);
+  font-weight: bold;
+  width: 100%;
+  margin-top: space(4);
+}

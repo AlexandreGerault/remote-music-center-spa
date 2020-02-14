@@ -1,6 +1,6 @@
 .form__two__cols {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: var(--gap);
 
   input[type=checkbox] {
@@ -34,9 +34,10 @@
 
 input {
   border: none;
-  background: #efefef;
+  background: var(--background);
   border-radius: 5px;
   padding: space(2);
+  color: white;
 }
 
 input[type=submit] {

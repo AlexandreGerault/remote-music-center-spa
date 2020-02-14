@@ -72,10 +72,11 @@ export default {
         endpoints: {
           login: { url: 'auth/login', method: 'post', propertyName: 'access_token' },
           user: { url: 'auth/me', method: 'post', propertyName: false },
-          logout: false
+          logout: { url: 'auth/logout', method: 'post', propertyName: false }
         }
       }
-    }
+    },
+    resetOnError: true
   },
   /*
   ** Style resources module configuration

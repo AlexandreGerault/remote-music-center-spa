@@ -44,6 +44,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     '@nuxtjs/style-resources'
   ],
   /*
@@ -51,6 +52,30 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: 'http://rmc.local/api'
+  },
+  /*
+  ** Auth module configuration
+  ** See https://etienner.github.io/authentification-avec-jwt-sur-nuxt-js/
+  */
+  auth: {
+    localStorage: false,
+    cookie: {
+      prefix: 'auth.',
+      options: {
+        path: '/',
+        maxAge: 10800
+      }
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'auth/login', method: 'post', propertyName: 'access_token' },
+          user: { url: 'auth/me', method: 'post', propertyName: false },
+          logout: false
+        }
+      }
+    }
   },
   /*
   ** Style resources module configuration

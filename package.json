@@ -13,8 +13,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
-    "@nuxtjs/axios": "^5.3.6"
+    "@nuxtjs/auth": "^4.8.5",
+    "@nuxtjs/axios": "^5.9.5",
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
@@ -23,8 +24,8 @@
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
-    "eslint": "^6.1.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint": "^6.8.0",
+    "eslint-plugin-nuxt": "^0.5.1",
     "jest": "^24.1.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",

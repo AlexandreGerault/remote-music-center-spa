@@ -34,6 +34,7 @@ export default {
   methods: {
     register () {
       this.$axios.$post('/auth/register', {
+        name: this.pseudo,
         email: this.email,
         password: this.password
       })

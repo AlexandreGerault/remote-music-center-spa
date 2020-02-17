@@ -19,7 +19,9 @@
           </nuxt-link>
         </li>
         <li v-if="isAuthenticated">
-          {{ loggedInUser.name }}
+          <nuxt-link to="/user">
+            {{ loggedInUser.name }}
+          </nuxt-link>
         </li>
         <li v-if="isAuthenticated">
           <Logout />

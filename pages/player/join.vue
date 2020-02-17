@@ -5,7 +5,29 @@
 
       <template v-if="isAuthenticated">
         <form @submit.prevent="join" class="form__vertical">
-          <input id="player-id" v-model="playerId" type="text" name="player-id" placeholder="#548756">
+          <input
+            id="player-id"
+            v-model="playerId"
+            type="text"
+            name="player-id"
+            placeholder="#548756"
+          >
+          <div>
+            <input
+              id="password-protected"
+              v-model="isProtected"
+              type="checkbox"
+            >
+            <label for="password-protected">Lecteur protégé ?</label>
+          </div>
+          <input
+            id="password"
+            v-if="isProtected"
+            v-model="password"
+            type="password"
+            name="password"
+            placeholder="***"
+          >
           <nuxt-link to="/player/create">
             Créer un lecteur
           </nuxt-link>
@@ -14,8 +36,20 @@
       </template>
       <template v-else>
         <form @submit.prevent="guestjoin" class="form__vertical">
-          <input id="username" v-model="username" type="text" name="name" placeholder="John Doe">
-          <input id="player-id" v-model="playerId" type="text" name="player-id" placeholder="#548756">
+          <input
+            id="username"
+            v-model="username"
+            type="text"
+            name="name"
+            placeholder="John Doe"
+          >
+          <input
+            id="player-id"
+            v-model="playerId"
+            type="text"
+            name="player-id"
+            placeholder="#548756"
+          >
           <input type="submit" value="Continuer en tant qu'invité">
           <div class="secondary__actions">
             <nuxt-link to="/login">
@@ -34,24 +68,43 @@
 
 <script>
 
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
 
   data () {
     return {
       username: '',
+      password: '',
+      isProtected: false,
       playerId: ''
     }
   },
   computed: {
-    ...mapGetters(['isAuthenticated', 'loggedInUser'])
+    ...mapGetters(['isAuthenticated', 'loggedInUser']),
+    parameters () {
+      const params = {}
+
+      params.player = this.playerId
+      if (this.password) {
+        params.password = this.password
+      }
+
+      return params
+    }
   },
   methods: {
+    ...mapActions(['joinPlayer']),
+
     async join () {
-      await this.$axios.post('/players/join', {
-        player: this.playerId
-      })
+      const parameters = this.parameters
+
+      try {
+        await this.$axios.post('/players/join', parameters)
+        const { data } = await this.$axios.post('auth/me')
+        this.$store.dispatch('joinPlayer', data.player_id)
+      } catch (error) {
+      }
     }
   }
 

@@ -94,7 +94,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['joinPlayer']),
+    ...mapActions(['joinPlayer', 'updatePlayer']),
 
     async join () {
       const parameters = this.parameters
@@ -103,6 +103,7 @@ export default {
         await this.$axios.post('/players/join', parameters)
         const { data } = await this.$axios.post('auth/me')
         this.$store.dispatch('joinPlayer', data.player_id)
+        this.$store.dispatch('updatePlayer')
       } catch (error) {
       }
     }

@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>{{ loggedInUser.name }}</p>
+    <p>{{ userPlayer.name }}</p>
   </div>
 </template>
 
@@ -11,7 +12,7 @@ import { mapGetters } from 'vuex'
 export default {
   middleware: 'auth',
   computed: {
-    ...mapGetters(['loggedInUser'])
+    ...mapGetters(['loggedInUser', 'userPlayer'])
   }
 }
 </script>

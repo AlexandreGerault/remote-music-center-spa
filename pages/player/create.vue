@@ -42,7 +42,7 @@ export default {
     parameters () {
       const params = {}
 
-      params.player = this.playerId
+      params.name = this.playerName
       if (this.password) {
         params.password = this.password
       }
@@ -54,6 +54,9 @@ export default {
     async createPlayer () {
       try {
         await this.$axios.post('players/store', this.parameters)
+        const { data } = await this.$axios.post('auth/me')
+        this.$store.dispatch('joinPlayer', data.player_id)
+        this.$store.dispatch('updatePlayer')
       } catch (error) {
       }
     }

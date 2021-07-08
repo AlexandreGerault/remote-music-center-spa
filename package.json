@@ -15,7 +15,8 @@
   "dependencies": {
     "@nuxtjs/auth": "^4.8.5",
     "@nuxtjs/axios": "^5.9.5",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vuex-persist": "^2.2.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",

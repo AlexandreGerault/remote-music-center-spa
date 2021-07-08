@@ -1,8 +1,26 @@
 <template>
-  <div>
-    <nuxt />
+  <div class="app">
+    <Navbar />
+    <Sidebar />
+    <main>
+      <nuxt />
+    </main>
   </div>
 </template>
+
+<script>
+
+import Navbar from '~/components/Navbar'
+import Sidebar from '~/components/Sidebar'
+
+export default {
+  components: {
+    Navbar,
+    Sidebar
+  }
+}
+
+</script>
 
 <style>
 html {
